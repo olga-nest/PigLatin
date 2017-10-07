@@ -4,23 +4,23 @@
 
 -(NSString *)stringByPigLatinization {
     
-    NSString *inputstring = self;
-    NSString *translateMe = [inputstring lowercaseString];
+    NSString *translateMe = self;
     
     NSArray *wordsArr = [translateMe componentsSeparatedByString:@" "];
     NSMutableArray *translatedStringArr = [NSMutableArray new];
     
-    NSCharacterSet *vowels = [NSCharacterSet characterSetWithCharactersInString:@"aeiou"];
+    NSCharacterSet *vowels = [NSCharacterSet characterSetWithCharactersInString:@"aeiouAEIOU"];
     
     for (NSString *word in wordsArr) {
         
         NSRange range = [word rangeOfCharacterFromSet:vowels];
         if (range.location == 0) {
-            NSString *translatedWord = [NSString stringWithFormat:@"%@ay", word];
+            //TODO: find another way to separate words with " " when converting NSArray to NSString
+            NSString *translatedWord = [NSString stringWithFormat:@"%@ay ", word];
             [translatedStringArr addObject:translatedWord];
-            NSLog(@"translated str array count %lu", [translatedStringArr count]);
         } else {
             NSLog(@"Ooops");
+            
         }
     }
     
