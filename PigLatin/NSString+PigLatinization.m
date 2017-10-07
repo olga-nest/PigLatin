@@ -28,13 +28,13 @@
             NSString *consonants = [word substringWithRange:consonantsToMove];
             
             //Get the range: first vowel to the end of the word
-            NSUInteger mainPart = (range.length - firstConsonant);
+            NSUInteger mainPart = (word.length -  firstConsonant);
             //Create a range first vowel >> last letter
-            NSRange newFirstPartOfAWord = NSMakeRange(mainPart, range.length);
+            NSRange newFirstPartOfAWord = NSMakeRange(firstConsonant, mainPart);
             //Create a string from word: first vowel >> last letter
             NSString *newFirstPartOfAWordStr = [word substringWithRange:newFirstPartOfAWord];
             
-            NSString *translatedWord = [NSString stringWithFormat:@"%@%@ay", newFirstPartOfAWordStr, consonants];
+            NSString *translatedWord = [NSString stringWithFormat:@"%@%@ay ", newFirstPartOfAWordStr, consonants];
             [translatedStringArr addObject:translatedWord];
         }
     }
